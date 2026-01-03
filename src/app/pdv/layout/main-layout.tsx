@@ -2,15 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { Toaster, toast } from "sonner";
-import Header from "@/components/layout/header";
-import Sidebar from "@/components/layout/sidebar";
+import Header from "@/app/pdv/layout/header";
+import Sidebar from "@/app/pdv/layout/sidebar";
 import AddCustomerModal from "@/components/pdv/add-customer-modal";
 import BudgetModal from "@/components/pdv/budget-modal";
 import CartList from "@/components/pdv/cart-list";
-import CustomerPanel from "@/components/pdv/customer-panel";
+import CustomerPanel from "@/app/pdv/components/customer/customer-panel";
 import DiscountModal from "@/components/pdv/discount-modal";
 import PaymentMethods from "@/components/pdv/payment-methods";
-import SearchCustomerModal from "@/components/pdv/search-customer-modal";
+import SearchCustomerModal from "@/app/pdv/components/search/search-customer-modal";
 import SearchProductModal from "@/components/pdv/search-product-modal";
 import TotalsPanel from "@/components/pdv/totals-panel";
 import { Button } from "@/components/ui/button";
