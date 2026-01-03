@@ -2,7 +2,7 @@
 
 import type React from "react";
 import { useState } from "react";
-import CustomerAvatar from "@/app/pdv/components/customer-avatar";
+import CustomerAvatar from "@/app/pdv/components/client/customer-avatar";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -11,26 +11,28 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { type Customer, mockCustomers } from "@/data/mock-customers";
+import type { Customer } from "@/types/customer";
 import { fuzzySearch } from "@/utils/search";
 
 interface SearchCustomerModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSelectCustomer: (customer: Customer) => void;
+  customers: Customer[];
 }
 
 const SearchCustomerModal: React.FC<SearchCustomerModalProps> = ({
   isOpen,
   onClose,
   onSelectCustomer,
+  customers,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState<Customer[]>(mockCustomers);
+  const [searchResults, setSearchResults] = useState<Customer[]>(customers);
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
-    const results = fuzzySearch(mockCustomers, term, [
+    const results = fuzzySearch(customers, term, [
       "name",
       "phone",
       "cpf_cnpj",
@@ -42,7 +44,7 @@ const SearchCustomerModal: React.FC<SearchCustomerModalProps> = ({
     onSelectCustomer(customer);
     onClose();
     setSearchTerm("");
-    setSearchResults(mockCustomers);
+    setSearchResults(customers);
   };
 
   return (

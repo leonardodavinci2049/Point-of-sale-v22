@@ -11,26 +11,28 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { mockProducts, type Product } from "@/data/mock-products";
+import type { Product } from "@/types/product";
 import { fuzzySearch } from "@/utils/search";
 
 interface SearchProductModalProps {
   isOpen: boolean;
   onClose: () => void;
   onSelectProduct: (product: Product) => void;
+  products: Product[];
 }
 
 const SearchProductModal: React.FC<SearchProductModalProps> = ({
   isOpen,
   onClose,
   onSelectProduct,
+  products,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState<Product[]>(mockProducts);
+  const [searchResults, setSearchResults] = useState<Product[]>(products);
 
   const handleSearch = (term: string) => {
     setSearchTerm(term);
-    const results = fuzzySearch(mockProducts, term, [
+    const results = fuzzySearch(products, term, [
       "name",
       "code",
       "description",
@@ -43,7 +45,7 @@ const SearchProductModal: React.FC<SearchProductModalProps> = ({
     onSelectProduct(product);
     onClose();
     setSearchTerm("");
-    setSearchResults(mockProducts);
+    setSearchResults(products);
   };
 
   return (
