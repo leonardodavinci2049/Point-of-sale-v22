@@ -1,5 +1,5 @@
+import type React from "react";
 import Header02 from "@/components/header/Header02";
-import React from "react";
 
 const Poslayout = ({
   children,
@@ -8,9 +8,8 @@ const Poslayout = ({
 }>) => {
   return (
     <>
-          <Header02 />
-          <div>{children}</div>
-    
+      <Header02 />
+      <div>{children}</div>
     </>
   );
 };

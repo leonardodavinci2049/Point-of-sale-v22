@@ -4,7 +4,13 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import ModeToggle from "../theme/mode-toggle";
 
@@ -18,7 +24,12 @@ const Logo = () => {
   return (
     <Link href="/" className="flex space-x-2 py-3 items-center">
       <h1 className="text-xl font-bold flex items-center gap-2">
-        <Image src="/logo.png" alt="StarterKitPro Blocks" width={24} height={24} />
+        <Image
+          src="/logo.png"
+          alt="StarterKitPro Blocks"
+          width={24}
+          height={24}
+        />
         PROCEDURES
       </h1>
     </Link>
@@ -39,7 +50,10 @@ export default function Header02() {
                 {TopMenu.map((menu) => (
                   <a
                     key={menu.id}
-                    className={cn(buttonVariants({ variant: "ghost" }), navigationMenuTriggerStyle)}
+                    className={cn(
+                      buttonVariants({ variant: "ghost" }),
+                      navigationMenuTriggerStyle,
+                    )}
                     href={menu.href}
                   >
                     {menu.name}
@@ -50,7 +64,10 @@ export default function Header02() {
                 <ModeToggle />
               </Suspense>
               <div className="flex gap-2">
-                <Link href="/test-procedure" className={buttonVariants({ variant: "default" })}>
+                <Link
+                  href="/test-procedure"
+                  className={buttonVariants({ variant: "default" })}
+                >
                   Test Procedures
                 </Link>
               </div>
@@ -73,7 +90,10 @@ export default function Header02() {
                     </Button>
                   </SheetTrigger>
                 </div>
-                <SheetContent side="bottom" className="overflow-y-auto pt-0 pb-5">
+                <SheetContent
+                  side="bottom"
+                  className="overflow-y-auto pt-0 pb-5"
+                >
                   <SheetHeader className="pb-0">
                     <SheetTitle>
                       <Logo />
@@ -81,7 +101,11 @@ export default function Header02() {
                   </SheetHeader>
                   <div className="mt-0 flex flex-col gap-0 px-4">
                     {TopMenu.map((menu) => (
-                      <a key={menu.id} href={menu.href} className="font-semibold text-lg py-2">
+                      <a
+                        key={menu.id}
+                        href={menu.href}
+                        className="font-semibold text-lg py-2"
+                      >
                         {menu.name}
                       </a>
                     ))}
@@ -90,7 +114,10 @@ export default function Header02() {
                     <div className="mt-2 flex flex-col gap-2">
                       <Link
                         href="/login"
-                        className={cn(buttonVariants({ variant: "default" }), "py-5")}
+                        className={cn(
+                          buttonVariants({ variant: "default" }),
+                          "py-5",
+                        )}
                       >
                         Get Started
                       </Link>

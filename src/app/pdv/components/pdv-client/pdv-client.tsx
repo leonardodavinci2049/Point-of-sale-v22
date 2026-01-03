@@ -3,11 +3,11 @@
 import dynamic from "next/dynamic";
 import { useCallback, useEffect, useState } from "react";
 import { Toaster, toast } from "sonner";
-
+import { finalizeSale } from "@/app/pdv/actions/sale-actions";
+import CustomerPanel from "@/app/pdv/components/customer/customer-panel";
 import Header from "@/app/pdv/layout/header";
 import Sidebar from "@/app/pdv/layout/sidebar";
 import CartList from "@/components/pdv/cart-list";
-import CustomerPanel from "@/app/pdv/components/customer/customer-panel";
 import PaymentMethods from "@/components/pdv/payment-methods";
 import TotalsPanel from "@/components/pdv/totals-panel";
 import { Button } from "@/components/ui/button";
@@ -16,12 +16,9 @@ import { generateBudgetId } from "@/types/budget";
 import type { Customer } from "@/types/customer";
 import type { Product } from "@/types/product";
 import { BudgetStorage } from "@/utils/budget-storage";
+import { useCartStore, useCustomerStore, useModalStore } from "../../stores";
+import { usePDVCalculations } from "../../hooks/use-pdv-calculations";
 
-import { usePDVCalculations } from "../hooks/use-pdv-calculations";
-import { useCartStore } from "../stores/cart-store";
-import { useCustomerStore } from "../stores/customer-store";
-import { useModalStore } from "../stores/modal-store";
-import { finalizeSale } from "@/app/pdv/actions/sale-actions";
 
 // Lazy load modals for better performance
 const SearchProductModal = dynamic(
