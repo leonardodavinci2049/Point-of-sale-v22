@@ -1,6 +1,6 @@
 import { HelpCircle, Menu, Settings } from "lucide-react";
 import React from "react";
-import BudgetButton from "@/components/pdv/budget-button";
+import BudgetButton from "@/app/pdv/components/budget/budget-button";
 import ModeToggle from "@/components/theme/mode-toggle";
 import { Button } from "@/components/ui/button";
 

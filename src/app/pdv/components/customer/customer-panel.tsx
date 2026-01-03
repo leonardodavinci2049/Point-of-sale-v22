@@ -1,6 +1,6 @@
 import { Search, UserPlus } from "lucide-react";
 import type React from "react";
-import CustomerAvatar from "@/components/customer-avatar";
+import CustomerAvatar from "@/app/pdv/components/customer-avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { Customer } from "@/data/mock-customers";

@@ -4,25 +4,24 @@ import dynamic from "next/dynamic";
 import { useCallback, useEffect, useState } from "react";
 import { Toaster, toast } from "sonner";
 import { finalizeSale } from "@/app/pdv/actions/sale-actions";
+import CartList from "@/app/pdv/components/cart/cart-list";
 import CustomerPanel from "@/app/pdv/components/customer/customer-panel";
-import Header from "@/app/pdv/layout/header";
-import Sidebar from "@/app/pdv/layout/sidebar";
-import CartList from "@/components/pdv/cart-list";
-import PaymentMethods from "@/components/pdv/payment-methods";
-import TotalsPanel from "@/components/pdv/totals-panel";
+import PaymentMethods from "@/app/pdv/components/payment-methods/payment-methods";
+import TotalsPanel from "@/app/pdv/components/totals-panel";
+import Header from "@/app/pdv/layout-page/header";
+import Sidebar from "@/app/pdv/layout-page/sidebar";
 import { Button } from "@/components/ui/button";
 import type { Budget } from "@/types/budget";
 import { generateBudgetId } from "@/types/budget";
 import type { Customer } from "@/types/customer";
 import type { Product } from "@/types/product";
 import { BudgetStorage } from "@/utils/budget-storage";
-import { useCartStore, useCustomerStore, useModalStore } from "../../stores";
 import { usePDVCalculations } from "../../hooks/use-pdv-calculations";
-
+import { useCartStore, useCustomerStore, useModalStore } from "../../stores";
 
 // Lazy load modals for better performance
 const SearchProductModal = dynamic(
-  () => import("@/components/pdv/search-product-modal"),
+  () => import("@/app/pdv/components/search/search-product-modal"),
   { ssr: false },
 );
 const SearchCustomerModal = dynamic(
@@ -30,15 +29,21 @@ const SearchCustomerModal = dynamic(
   { ssr: false },
 );
 const AddCustomerModal = dynamic(
-  () => import("@/components/pdv/add-customer-modal"),
+  () => import("@/app/pdv/components/customer/add-customer-modal"),
   { ssr: false },
 );
-const DiscountModal = dynamic(() => import("@/components/pdv/discount-modal"), {
-  ssr: false,
-});
-const BudgetModal = dynamic(() => import("@/components/pdv/budget-modal"), {
-  ssr: false,
-});
+const DiscountModal = dynamic(
+  () => import("@/app/pdv/components/discount/discount-modal"),
+  {
+    ssr: false,
+  },
+);
+const BudgetModal = dynamic(
+  () => import("@/app/pdv/components/budget/budget-modal"),
+  {
+    ssr: false,
+  },
+);
 
 export function PDVClient() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

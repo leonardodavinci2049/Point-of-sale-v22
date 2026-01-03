@@ -2,7 +2,7 @@
 
 import type React from "react";
 import { useState } from "react";
-import CustomerAvatar from "@/components/customer-avatar";
+import CustomerAvatar from "@/app/pdv/components/customer-avatar";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
